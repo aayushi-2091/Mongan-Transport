@@ -104,14 +104,20 @@ $result1 = mysqli_query($conn, $sql1);
                                             <div class="form-row">
                                                 <div class="mb-3">
                                                     <label for="validationCustom01" class="form-label">Add Logo</label>
-                                                    <img src="../../site_details_upload/<?= $row['Logo'] ?>" alt="Previous Logo"
-                                                        width="100" height="100">
+                                                    <img src="../../site_details_upload/<?= $row['Logo'] ?>"
+                                                        alt="Previous Logo" width="100" height="100">
+
+                                                    <!-- Hidden input to store existing logo -->
+                                                    <input type="hidden" name="existing_logo" value="<?= $row['Logo'] ?>">
+
                                                     <input class="form-control" type="file" id="formFile" name="formFile"
-                                                        accept="image/*" required>
+                                                        accept="image/*">
+
                                                     <div class="valid-feedback">
                                                         Looks good!
                                                     </div>
                                                 </div>
+
 
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom02">Add phone number(s)</label>
@@ -120,19 +126,22 @@ $result1 = mysqli_query($conn, $sql1);
                                                         <div class="col-lg-12">
                                                             <div id="row">
                                                             </div>
-                                                            <?php while ($row1 = mysqli_fetch_assoc($result1)) {?>
+                                                            <?php while ($row1 = mysqli_fetch_assoc($result1)) { ?>
                                                                 <div id="newinput" style="margin-top: 6px;">
-                                                                    <input type="hidden" name="phoneid" value="<?= $row1['Id'];?>">
+                                                                    <input type="hidden" name="phoneid"
+                                                                        value="<?= $row1['Id']; ?>">
                                                                     <div class="input-group m-3">
                                                                         <div class="input-group-prepend">
-                                                                            <button class="btn btn-danger deleteRow" type="button">
+                                                                            <button class="btn btn-danger deleteRow"
+                                                                                type="button">
                                                                                 <i class="bi bi-trash"></i> Delete
                                                                             </button>
                                                                         </div>
-                                                                        <input type="tel" class="form-control m-input" value="<?=$row1['Phone number']?>" name="phone[]">
+                                                                        <input type="tel" class="form-control m-input"
+                                                                            value="<?= $row1['Phone number'] ?>" name="phone[]">
                                                                     </div>
                                                                 </div>
-                                                            <?php  } ?>
+                                                            <?php } ?>
                                                             <div id="newinput" style="margin-top: 6px;"></div>
                                                             <button id="rowAdder" type="button" class="btn btn-dark">
                                                                 <span class="bi bi-plus-square-dotted">
@@ -185,14 +194,14 @@ $result1 = mysqli_query($conn, $sql1);
     <?php require_once "../../includes/script.php" ?>
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function() {
+        (function () {
             'use strict';
-            window.addEventListener('load', function() {
+            window.addEventListener('load', function () {
                 // Fetch all the forms we want to apply custom Bootstrap validation styles to
                 var forms = document.getElementsByClassName('needs-validation');
                 // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
                         if (form.checkValidity() === false) {
                             event.preventDefault();
                             event.stopPropagation();
@@ -204,8 +213,8 @@ $result1 = mysqli_query($conn, $sql1);
         })();
     </script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById("rowAdder").addEventListener("click", function() {
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("rowAdder").addEventListener("click", function () {
                 let newRow = document.createElement("div");
                 newRow.classList.add("input-group", "m-3");
 
@@ -221,7 +230,7 @@ $result1 = mysqli_query($conn, $sql1);
                 document.getElementById("newinput").appendChild(newRow);
             });
 
-            document.addEventListener("click", function(e) {
+            document.addEventListener("click", function (e) {
                 if (e.target && e.target.classList.contains("deleteRow")) {
                     e.target.closest(".input-group").remove();
                 }
