@@ -9,9 +9,6 @@ $row = mysqli_fetch_assoc($result);
 $siteId = $row['Id'];
 $sql1 = "SELECT * FROM `phone_number` WHERE `Site_details_Id` = $siteId";
 $result1 = mysqli_query($conn, $sql1);
-$row1 = mysqli_fetch_assoc($result1);
-echo $sql1; 
-
 ?>
 
 <body>
@@ -61,7 +58,7 @@ echo $sql1;
                                                                         <i class="bi bi-trash"></i> Delete
                                                                     </button>
                                                                 </div>
-                                                                <input type="tel" class="form-control m-input" name="phone[]" value="<?= $row1['Phone number']?>">
+                                                                <input type="tel" class="form-control m-input" name="phone[]" value="<?= $row1['Phone number'] ?>">
                                                             </div>
                                                         </div>
                                                     <?php }
@@ -134,6 +131,18 @@ echo $sql1;
                                                         <div class="col-lg-12">
                                                             <div id="row">
                                                             </div>
+                                                            <?php while ($row1 = mysqli_fetch_assoc($result1)) {?>
+                                                                <div id="newinput" style="margin-top: 6px;">
+                                                                    <div class="input-group m-3">
+                                                                        <div class="input-group-prepend">
+                                                                            <button class="btn btn-danger deleteRow" type="button">
+                                                                                <i class="bi bi-trash"></i> Delete
+                                                                            </button>
+                                                                        </div>
+                                                                        <input type="tel" class="form-control m-input" value="<?=$row1['Phone number']?>" name="phone[]">
+                                                                    </div>
+                                                                </div>
+                                                            <?php  } ?>
                                                             <div id="newinput" style="margin-top: 6px;"></div>
                                                             <button id="rowAdder" type="button" class="btn btn-dark">
                                                                 <span class="bi bi-plus-square-dotted">
@@ -186,14 +195,14 @@ echo $sql1;
     <?php require_once "../../includes/script.php" ?>
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function () {
+        (function() {
             'use strict';
-            window.addEventListener('load', function () {
+            window.addEventListener('load', function() {
                 // Fetch all the forms we want to apply custom Bootstrap validation styles to
                 var forms = document.getElementsByClassName('needs-validation');
                 // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
                         if (form.checkValidity() === false) {
                             event.preventDefault();
                             event.stopPropagation();
@@ -205,8 +214,8 @@ echo $sql1;
         })();
     </script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("rowAdder").addEventListener("click", function () {
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("rowAdder").addEventListener("click", function() {
                 let newRow = document.createElement("div");
                 newRow.classList.add("input-group", "m-3");
 
@@ -222,7 +231,7 @@ echo $sql1;
                 document.getElementById("newinput").appendChild(newRow);
             });
 
-            document.addEventListener("click", function (e) {
+            document.addEventListener("click", function(e) {
                 if (e.target && e.target.classList.contains("deleteRow")) {
                     e.target.closest(".input-group").remove();
                 }
