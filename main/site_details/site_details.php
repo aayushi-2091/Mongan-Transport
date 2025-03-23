@@ -50,19 +50,6 @@ $result1 = mysqli_query($conn, $sql1);
 
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom02">Add phone number(s)</label>
-                                                    <?php while ($row1) { ?>
-                                                        <div id="newinput" style="margin-top: 6px;">
-                                                            <div class="input-group m-3">
-                                                                <div class="input-group-prepend">
-                                                                    <button class="btn btn-danger deleteRow" type="button">
-                                                                        <i class="bi bi-trash"></i> Delete
-                                                                    </button>
-                                                                </div>
-                                                                <input type="tel" class="form-control m-input" name="phone[]" value="<?= $row1['Phone number'] ?>">
-                                                            </div>
-                                                        </div>
-                                                    <?php }
-                                                    ?>
                                                     <!-- <input type="text" class="form-control" id="validationCustom02" placeholder="Menu" required> -->
                                                     <div class="">
                                                         <div class="col-lg-12">
@@ -79,7 +66,6 @@ $result1 = mysqli_query($conn, $sql1);
                                                         Looks good!
                                                     </div>
                                                 </div>
-
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-6">
