@@ -38,6 +38,7 @@ $result1 = mysqli_query($conn, $sql1);
                                         <form class="needs-validation" novalidate
                                             action="../../components/site_details_handler.php" enctype="multipart/form-data"
                                             method="POST">
+                                            <input type="hidden" name="method" value="add">
                                             <div class="form-row">
                                                 <div class="mb-3">
                                                     <label for="validationCustom01" class="form-label">Add Logo</label>
@@ -98,6 +99,8 @@ $result1 = mysqli_query($conn, $sql1);
                                         <form class="needs-validation" novalidate
                                             action="../../components/site_details_handler.php" enctype="multipart/form-data"
                                             method="POST">
+                                            <input type="hidden" name="method" value="edit">
+                                            <input type="hidden" name="updateid" value="<?= $siteId; ?>">
                                             <div class="form-row">
                                                 <div class="mb-3">
                                                     <label for="validationCustom01" class="form-label">Add Logo</label>
@@ -119,6 +122,7 @@ $result1 = mysqli_query($conn, $sql1);
                                                             </div>
                                                             <?php while ($row1 = mysqli_fetch_assoc($result1)) {?>
                                                                 <div id="newinput" style="margin-top: 6px;">
+                                                                    <input type="hidden" name="phoneid" value="<?= $row1['Id'];?>">
                                                                     <div class="input-group m-3">
                                                                         <div class="input-group-prepend">
                                                                             <button class="btn btn-danger deleteRow" type="button">
