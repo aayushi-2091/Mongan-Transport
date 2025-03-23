@@ -128,10 +128,12 @@ $result1 = mysqli_query($conn, $sql1);
                                                             </div>
                                                             <?php while ($row1 = mysqli_fetch_assoc($result1)) { ?>
                                                                 <div id="newinput" style="margin-top: 6px;">
-                                                                    <input type="hidden" name="phoneid"
-                                                                        value="<?= $row1['Id']; ?>">
+                                                                    <!-- <input type="hidden" name="phoneid"
+                                                                        value="<?= $row1['Id']; ?>"> -->
                                                                     <div class="input-group m-3">
                                                                         <div class="input-group-prepend">
+                                                                        <input type="hidden" name="phoneid"
+                                                                        value="<?= $row1['Id']; ?>">
                                                                             <button class="btn btn-danger deleteRow"
                                                                                 type="button">
                                                                                 <i class="bi bi-trash"></i> Delete
