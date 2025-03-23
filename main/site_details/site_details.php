@@ -101,7 +101,7 @@ $result1 = mysqli_query($conn, $sql1);
                                             <div class="form-row">
                                                 <div class="mb-3">
                                                     <label for="validationCustom01" class="form-label">Add Logo</label>
-                                                    <img src="../site_details_upload/<?= $row['Logo'] ?>" alt="Previous Logo"
+                                                    <img src="../../site_details_upload/<?= $row['Logo'] ?>" alt="Previous Logo"
                                                         width="100" height="100">
                                                     <input class="form-control" type="file" id="formFile" name="formFile"
                                                         accept="image/*" required>
